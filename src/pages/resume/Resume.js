@@ -3,192 +3,284 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { Fade } from "react-reveal";
 import "./Resume.css";
-import myResumePdf from "../../assets/docs/Ashutosh_Hathidara_Resume_ML.pdf";
-import { Document, Page, pdfjs } from "react-pdf";
 import Button from "../../components/button/Button";
-import { greeting } from "../../portfolio";
 import TopButton from "../../components/topButton/TopButton";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+import { greeting } from "../../portfolio";
 
 export default class ResumePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pageWidth: null,
-      numPages: null,
-      currentPage: 1,
-      isLoading: true,
-      error: null,
-    };
-  }
-
-  componentDidMount() {
-    this.setPageWidth();
-    window.addEventListener("resize", this.setPageWidth);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.setPageWidth);
-  }
-
-  setPageWidth = () => {
-    const width = window.innerWidth;
-    let pageWidth;
-
-    if (width > 1200) {
-      pageWidth = 930;
-    } else if (width > 768) {
-      pageWidth = 700;
-    } else {
-      pageWidth = width * 0.9;
-    }
-
-    this.setState({ pageWidth });
-  };
-
-  onDocumentLoadSuccess = ({ numPages }) => {
-    this.setState({
-      numPages,
-      isLoading: false,
-      error: null,
-    });
-  };
-
-  onDocumentLoadError = (error) => {
-    console.error("Error loading PDF:", error);
-    this.setState({
-      error: "Failed to load resume. Please try again later.",
-      isLoading: false,
-    });
-  };
-
-  goToPreviousPage = () => {
-    this.setState((prevState) => ({
-      currentPage: Math.max(prevState.currentPage - 1, 1),
-    }));
-  };
-
-  goToNextPage = () => {
-    this.setState((prevState) => ({
-      currentPage: Math.min(prevState.currentPage + 1, prevState.numPages),
-    }));
-  };
-
   render() {
     const theme = this.props.theme;
-    const { pageWidth, numPages, currentPage, isLoading, error } = this.state;
 
     return (
       <div className="resume-main">
         <Header theme={theme} />
         <div className="resume-view">
-          <Fade bottom duration={2000} distance="40px">
+          <Fade bottom duration={1500} distance="30px">
             <div>
-              {/* Download Button */}
+              {/* Download / Print Button */}
               <div className="download-btn">
                 <Button
-                  text="📃 Download Resume"
-                  newTab={true}
-                  href={greeting.resumeLink}
+                  text="📄 Cetak / Simpan PDF"
+                  newTab={false}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.print();
+                  }}
                   theme={theme}
                 />
               </div>
 
-              {/* Loading State */}
-              {isLoading && !error && (
-                <div className="resume-loading">
-                  <div className="loading-spinner"></div>
-                  <p>Loading resume...</p>
+              {/* Exact LaTeX / Academic Resume Paper (Matches Template PDF View) */}
+              <div className="academic-resume-paper">
+                {/* Header */}
+                <div className="latex-header">
+                  <h1 className="latex-name">ALDI VANDIAZ MAULANA</h1>
+                  <div className="latex-contact">
+                    Semarang, Jawa Tengah, Indonesia &nbsp;|&nbsp; +62
+                    822-4540-0182
+                  </div>
+                  <div className="latex-contact-links">
+                    <a href="mailto:aldivandiazmaulana@gmail.com">
+                      aldivandiazmaulana@gmail.com
+                    </a>
+                    &nbsp;|&nbsp;
+                    <a
+                      href="https://www.linkedin.com/in/aldi-vandiaz-maulana-5450012a8/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      linkedin.com/in/aldi-vandiaz-maulana-5450012a8
+                    </a>
+                    &nbsp;|&nbsp;
+                    <a
+                      href="https://github.com/aldievanz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      github.com/aldievanz
+                    </a>
+                  </div>
                 </div>
-              )}
 
-              {/* Error State */}
-              {error && (
-                <div className="resume-error">
-                  <svg
-                    className="error-icon"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    width="48"
-                    height="48"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <p>{error}</p>
-                  <button
-                    onClick={() => window.location.reload()}
-                    className="retry-btn"
-                    aria-label="Reload resume"
-                  >
-                    Try Again
-                  </button>
+                {/* Ringkasan Profil */}
+                <div className="latex-section">
+                  <h2 className="latex-section-title">Profile Summary</h2>
+                  <hr className="latex-hr" />
+                  <p className="latex-text">
+                    Lulusan D3 Teknik Informatika Universitas Dian Nuswantoro
+                    (IPK 3.48 / 4.00) dengan fokus pada pengembangan Frontend
+                    Web. Berpengalaman magang 6 bulan sebagai Staff IT Web
+                    Programmer di PT Pertamina Lubricants, membangun dashboard
+                    dan sistem manajemen berbasis React.js dengan integrasi API
+                    dari backend NestJS. Terbiasa membangun UI yang responsif
+                    dan reusable component menggunakan React.js, TypeScript, dan
+                    Material UI, serta memiliki pemahaman backend (NestJS,
+                    PostgreSQL) yang membantu kolaborasi lintas tim. Memiliki
+                    kemampuan problem solving yang baik, cepat belajar, dan
+                    mampu bekerja mandiri maupun dalam tim.
+                  </p>
                 </div>
-              )}
 
-              {/* PDF Document */}
-              {!error && (
-                <div className="resume-page">
-                  <Document
-                    file={myResumePdf}
-                    onLoadSuccess={this.onDocumentLoadSuccess}
-                    onLoadError={this.onDocumentLoadError}
-                    loading={
-                      <div className="resume-loading">
-                        <div className="loading-spinner"></div>
-                        <p>Loading resume...</p>
-                      </div>
-                    }
-                  >
-                    {pageWidth && (
-                      <Page
-                        pageNumber={currentPage}
-                        width={pageWidth}
-                        loading={
-                          <div className="page-loading">
-                            <div className="loading-spinner"></div>
-                          </div>
-                        }
-                      />
-                    )}
-                  </Document>
-
-                  {/* Pagination Controls */}
-                  {numPages && numPages > 1 && (
-                    <div className="pagination-controls">
-                      <button
-                        onClick={this.goToPreviousPage}
-                        disabled={currentPage === 1}
-                        className="pagination-btn"
-                        aria-label="Previous page"
-                      >
-                        ← Previous
-                      </button>
-                      <span className="page-info" aria-live="polite">
-                        Page {currentPage} of {numPages}
+                {/* Education */}
+                <div className="latex-section">
+                  <h2 className="latex-section-title">Education</h2>
+                  <hr className="latex-hr" />
+                  <div className="latex-item">
+                    <div className="latex-row">
+                      <span className="latex-bold">
+                        Universitas Dian Nuswantoro
                       </span>
-                      <button
-                        onClick={this.goToNextPage}
-                        disabled={currentPage === numPages}
-                        className="pagination-btn"
-                        aria-label="Next page"
-                      >
-                        Next →
-                      </button>
+                      <span className="latex-right-italic">2023 – 2026</span>
                     </div>
-                  )}
+                    <div className="latex-row">
+                      <span className="latex-italic">
+                        Diploma 3 (D3) Teknik Informatika
+                      </span>
+                      <span className="latex-right-italic">
+                        Semarang, Jawa Tengah, Indonesia
+                      </span>
+                    </div>
+                    <ul className="latex-list">
+                      <li>
+                        Cumulative GPA: <strong>3.48 / 4.00</strong>{" "}
+                        &nbsp;|&nbsp; Yudisium: <strong>10 Juli 2026</strong>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              )}
+
+                {/* Experience */}
+                <div className="latex-section">
+                  <h2 className="latex-section-title">Experience</h2>
+                  <hr className="latex-hr" />
+                  <div className="latex-item">
+                    <div className="latex-row">
+                      <span className="latex-bold">
+                        PT Pertamina Lubricants (Anak Perusahaan Pertamina Patra
+                        Niaga)
+                      </span>
+                      <span className="latex-right-italic">
+                        8 September 2025 – 19 Januari 2026
+                      </span>
+                    </div>
+                    <div className="latex-row">
+                      <span className="latex-italic">
+                        Staff IT (Web Programmer)
+                      </span>
+                      <span className="latex-right-italic">
+                        Gambir, Jakarta, Indonesia
+                      </span>
+                    </div>
+                    <ul className="latex-list">
+                      <li>
+                        Membangun UI dashboard manajemen BBM untuk laporan
+                        bulanan menggunakan React.js.
+                      </li>
+                      <li>
+                        Berkolaborasi dengan tim IT dalam mengembangkan fitur
+                        baru pada aplikasi internal Perusahaan.
+                      </li>
+                      <li>
+                        Mengembangkan dan memelihara aplikasi web internal
+                        Perusahaan (frontend & integrasi API dari NestJS).
+                      </li>
+                      <li>
+                        Mendukung operasional sistem informasi Perusahaan agar
+                        berjalan optimal.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Technical Skills */}
+                <div className="latex-section">
+                  <h2 className="latex-section-title">Technical Skills</h2>
+                  <hr className="latex-hr" />
+                  <ul className="latex-skills-list">
+                    <li>
+                      <strong>Languages & Frontend:</strong> React.js,
+                      TypeScript, JavaScript (ES6+), HTML5, CSS3, Material UI
+                      (MUI), React Query (TanStack), Axios
+                    </li>
+                    <li>
+                      <strong>Backend & Databases:</strong> NestJS, RESTful API,
+                      Laravel, CodeIgniter, PHP, Java, PostgreSQL, MySQL,
+                      HeidiSQL
+                    </li>
+                    <li>
+                      <strong>Developer Tools & Cloud:</strong> Git, GitHub,
+                      Visual Studio Code, Android Studio, Postman, Vercel,
+                      Google Cloud Platform (GCP), AWS Cloud Fundamental
+                    </li>
+                    <li>
+                      <strong>Soft Skills:</strong> Kerja Tim, Problem Solving,
+                      Komunikasi, Cepat Belajar, Adaptivitas
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Projects */}
+                <div className="latex-section">
+                  <h2 className="latex-section-title">Projects</h2>
+                  <hr className="latex-hr" />
+
+                  <div className="latex-item">
+                    <div className="latex-row">
+                      <span className="latex-bold">
+                        Plant Map Management System
+                      </span>
+                      <span className="latex-right-italic">
+                        September 2025 – November 2025
+                      </span>
+                    </div>
+                    <div className="latex-row">
+                      <span className="latex-italic">React.js & NestJS</span>
+                    </div>
+                    <ul className="latex-list">
+                      <li>
+                        Sistem web untuk pemetaan dan monitoring lokasi
+                        plant/unit produksi dengan fitur CRUD, manajemen user,
+                        visualisasi peta, dan role-based access control (RBAC).
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="latex-item">
+                    <div className="latex-row">
+                      <span className="latex-bold">IT Analitik System</span>
+                      <span className="latex-right-italic">
+                        September 2025 – Desember 2025
+                      </span>
+                    </div>
+                    <div className="latex-row">
+                      <span className="latex-italic">
+                        React.js, TypeScript, Material UI, React Query &
+                        ApexCharts
+                      </span>
+                    </div>
+                    <ul className="latex-list">
+                      <li>
+                        Sistem analitik dan monitoring aset IT berbasis web
+                        dengan dashboard real-time, visualisasi data
+                        (ApexCharts, Chart.js), integrasi Google Maps untuk
+                        pemetaan lokasi aset, serta modul import/export laporan.
+                        Berperan dalam pengembangan frontend dashboard dan
+                        manajemen state.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Certifications */}
+                <div className="latex-section">
+                  <h2 className="latex-section-title">Certifications</h2>
+                  <hr className="latex-hr" />
+                  <ul className="latex-list">
+                    <li>
+                      <strong>Certification Scheme of Web Developer</strong> –
+                      Badan Nasional Sertifikasi Profesi (BNSP)
+                      &nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                      <em>Januari 2025 – Januari 2028</em> &nbsp;|&nbsp; ID:
+                      62010 2131 5 007587 2025
+                    </li>
+                    <li>
+                      <strong>
+                        Certification Scheme of Pemrograman Mobil Pratama
+                        (Junior Mobile Programmer)
+                      </strong>{" "}
+                      – BNSP &nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                      <em>September 2025 – September 2028</em> &nbsp;|&nbsp; ID:
+                      62010 2512 5 008276 2025
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Organization */}
+                <div className="latex-section">
+                  <h2 className="latex-section-title">Organization</h2>
+                  <hr className="latex-hr" />
+                  <div className="latex-item">
+                    <div className="latex-row">
+                      <span className="latex-bold">
+                        Himpunan Mahasiswa Diploma Teknik Informatika (HMDTI
+                        UDINUS)
+                      </span>
+                      <span className="latex-right-italic">2024 – 2025</span>
+                    </div>
+                    <div className="latex-row">
+                      <span className="latex-italic">Anggota</span>
+                      <span className="latex-right-italic">
+                        Semarang, Indonesia
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </Fade>
         </div>
-        <Footer theme={theme} onToggle={this.props.onToggle}/>
+        <Footer theme={theme} onToggle={this.props.onToggle} />
         <TopButton theme={theme} />
       </div>
     );

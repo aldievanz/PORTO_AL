@@ -1,4 +1,68 @@
 .raw_logo {
-  height: 305;
-  width: 440;
+  height: 310px;
+  width: 480px;
+  max-width: 95vw;
+}
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.myHexagon {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawHexagon 3.5s ease-in-out forwards;
+}
+
+.initials-text {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: drawInitials 3s ease-in-out forwards 0.5s;
+}
+
+.signature-text {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawSignature 3.5s ease-in-out forwards 1s;
+}
+
+@keyframes drawHexagon {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawInitials {
+  0% {
+    stroke-dashoffset: 300;
+    fill-opacity: 0;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0.5;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+}
+
+@keyframes drawSignature {
+  0% {
+    stroke-dashoffset: 400;
+    fill-opacity: 0;
+  }
+  80% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0.5;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
 }

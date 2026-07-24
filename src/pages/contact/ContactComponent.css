@@ -55,9 +55,21 @@
   text-align: center;
 }
 
-.contact-heading-img-div > * {
-  max-width: 100%;
-  height: auto;
+.contact-heading-img-div > img {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 25%;
+  border: 10px solid #000000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .contact-heading-img-div > img {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 .blog-heading-img-div > * {
