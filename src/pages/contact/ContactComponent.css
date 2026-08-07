@@ -67,8 +67,9 @@
 
 @media (max-width: 768px) {
   .contact-heading-img-div > img {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
+    max-width: 90vw;
   }
 }
 
@@ -164,6 +165,11 @@
 
   .address-heading-text {
     font-size: 20px;
+  }
+
+  .basic-contact {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 
   .blog-heading-div {
