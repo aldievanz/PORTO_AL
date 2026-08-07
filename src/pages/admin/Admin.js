@@ -527,7 +527,17 @@ export default function Admin() {
           </div>
         </div>
       ) : (
-        <div className="admin-add-bar">
+        <div className="admin-add-bar" style={{ display: "flex", gap: "1rem" }}>
+          <button
+            className="btn-fetch-repos"
+            onClick={fetchPublicRepos}
+            disabled={loading}
+          >
+            <span role="img" aria-label="sync">
+              🔄
+            </span>{" "}
+            Tarik Repo Publik
+          </button>
           <button
             className="admin-btn admin-btn-primary"
             onClick={() => {
