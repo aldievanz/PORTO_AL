@@ -78,38 +78,119 @@ export default function Admin() {
     setProjects([]);
   }
 
-  async function fetchProjectsFromGitHub() {
-    setLoading(true);
-    setStatus({ msg: "Mengambil data dari GitHub...", type: "info" });
+  const fetchProjectsFromGitHub = async () => {
     try {
-      const res = await fetch(
+      setLoading(true);
+      setStatus({ msg: "Menghubungkan ke GitHub...", type: "info" });
+
+      const response = await fetch(
         `https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${FILE_PATH}`,
         {
           headers: {
-            Authorization: `Bearer ${
-              token || localStorage.getItem("gh_admin_token")
-            }`,
+            Authorization: `token ${token}`,
+            Accept: "application/vnd.github.v3+json",
           },
         }
       );
-      if (!res.ok) {
+
+      if (response.status === 404) {
+        setProjects([]);
+        setStatus({
+          msg: "File belum ada, silakan tambahkan data baru.",
+          type: "info",
+        });
+        setLoading(false);
+        return;
+      }
+
+      if (!response.ok) {
         throw new Error(
-          res.status === 401
-            ? "Token tidak valid atau tidak punya akses!"
-            : `Error: ${res.status}`
+          "Gagal mengambil data dari GitHub. Periksa kembali token Anda."
         );
       }
-      const data = await res.json();
+
+      const data = await response.json();
       setFileSha(data.sha);
-      const content = JSON.parse(atob(data.content.replace(/\n/g, "")));
-      setProjects(content.data || []);
-      setStatus({ msg: "Data berhasil dimuat!", type: "success" });
-    } catch (e) {
-      setStatus({ msg: e.message, type: "error" });
+
+      const decodedContent = b64DecodeUnicode(data.content);
+      const parsedData = JSON.parse(decodedContent);
+
+      setProjects(parsedData.data || []);
+      setStatus({ msg: "Berhasil terhubung ke GitHub!", type: "success" });
+    } catch (error) {
+      console.error(error);
+      setStatus({ msg: error.message, type: "error" });
+      if (error.message.includes("token")) {
+        handleLogout();
+      }
     } finally {
       setLoading(false);
     }
-  }
+  };
+
+  const fetchPublicRepos = async () => {
+    try {
+      setLoading(true);
+      setStatus({ msg: "Mengambil repositori dari GitHub...", type: "info" });
+
+      const response = await fetch(
+        `https://api.github.com/users/${GITHUB_REPO_OWNER}/repos?per_page=100&type=owner&sort=updated`
+      );
+      if (!response.ok) {
+        throw new Error("Gagal mengambil repositori dari GitHub");
+      }
+      const repos = await response.json();
+
+      const newProjects = repos.map((repo) => {
+        let iconifyClass = "logos:github";
+        if (repo.language) {
+          const lang = repo.language.toLowerCase();
+          if (lang === "javascript") iconifyClass = "logos:javascript";
+          else if (lang === "typescript")
+            iconifyClass = "logos:typescript-icon";
+          else if (lang === "java") iconifyClass = "logos:java";
+          else if (lang === "python") iconifyClass = "logos:python";
+          else if (lang === "html") iconifyClass = "logos:html-5";
+          else if (lang === "css") iconifyClass = "logos:css-3";
+          else if (lang === "php") iconifyClass = "logos:php";
+          else if (lang === "go") iconifyClass = "logos:go";
+          else if (lang === "c++" || lang === "c")
+            iconifyClass = "logos:c-plusplus";
+          else if (lang === "c#") iconifyClass = "logos:c-sharp";
+          else if (lang === "ruby") iconifyClass = "logos:ruby";
+          else if (lang === "dart") iconifyClass = "logos:dart";
+        }
+
+        return {
+          id: repo.node_id || repo.id.toString(),
+          name: repo.name,
+          createdAt: repo.created_at,
+          url: repo.html_url,
+          description: repo.description || "",
+          isFork: repo.fork,
+          languages: repo.language
+            ? [{ name: repo.language, iconifyClass: iconifyClass }]
+            : [],
+        };
+      });
+
+      const existingUrls = projects.map((p) => p.url);
+      const filteredNewProjects = newProjects.filter(
+        (p) => !existingUrls.includes(p.url)
+      );
+
+      setProjects([...projects, ...filteredNewProjects]);
+      setStatus({
+        msg: `Berhasil mengambil ${filteredNewProjects.length} repositori baru (repo yang sudah ada dilewati).`,
+        type: "success",
+      });
+    } catch (error) {
+      console.error(error);
+      setStatus({ msg: error.message, type: "error" });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   async function saveToGitHub(updatedProjects) {
     setLoading(true);
