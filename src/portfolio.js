@@ -7,9 +7,9 @@ const settings = {
 
 // SEO Related settings
 const seo = {
-  title: "Aldi Vandiaz Maulana — Frontend Web Developer",
+  title: "Aldi Vandiaz Maulana — Full Stack Developer",
   description:
-    "Lulusan D3 Teknik Informatika UDINUS (IPK 3.48) berfokus pada Frontend Web Development dengan React.js, TypeScript, dan Material UI.",
+    "Fresh graduate in Informatics Engineering who is passionate about software development and continuous learning. Enjoys solving problems, building impactful digital solutions, and collaborating in a team to create reliable and user-friendly applications.",
   og: {
     title: "Aldi Vandiaz Maulana Portfolio",
     type: "website",
@@ -23,7 +23,7 @@ const greeting = {
   logo_name: "AldiVandiaz",
   nickname: "aldivandiaz",
   subTitle:
-    "Lulusan D3 Teknik Informatika Universitas Dian Nuswantoro (IPK 3.48) dengan fokus pada pengembangan Frontend Web (React.js, TypeScript, Material UI) & pemahaman backend (NestJS, PostgreSQL). Berpengalaman magang 6 bulan sebagai Staff IT Web Programmer di PT Pertamina Lubricants.",
+    "Fresh graduate in Informatics Engineering who is passionate about software development and continuous learning. Enjoys solving problems, building impactful digital solutions, and collaborating in a team to create reliable and user-friendly applications.",
   resumeLink: "/resume",
   portfolio_repository: "https://github.com/aldievanz",
   githubProfile: "https://github.com/aldievanz",
@@ -53,7 +53,7 @@ const socialMediaLinks = [
 const skills = {
   data: [
     {
-      title: "Frontend Web Development",
+      title: "Full Stack Web Development",
       fileName: "FullStackImg",
       skills: [
         "⚡ Membangun UI web yang responsif, modern, dan reusable menggunakan React.js & TypeScript",
@@ -182,7 +182,7 @@ const degrees = {
       duration: "2023 – 2026",
       descriptions: [
         "⚡ Yudisium: 10 Juli 2026 | IPK: 3.48",
-        "⚡ Fokus pada penguasaan Frontend Web Development, Software Engineering, dan Database Management.",
+        "⚡ Fokus pada penguasaan Full Stack Web Development, Software Engineering, dan Database Management.",
         "⚡ Aktif dalam kegiatan organisasi Himpunan Mahasiswa Diploma Teknik Informatika (HMDTI).",
       ],
       website_link: "https://dinus.ac.id",
@@ -265,7 +265,7 @@ const projectsHeader = {
 
 const publicationsHeader = {
   title: "Projects List",
-  description: "Daftar proyek frontend & fullstack web development.",
+  description: "Daftar proyek full stack web development.",
   avatar_image_path: "projects_image.svg",
 };
 

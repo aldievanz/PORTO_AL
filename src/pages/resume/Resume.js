@@ -159,7 +159,7 @@ export default class ResumePage extends Component {
                   <hr className="latex-hr" />
                   <ul className="latex-skills-list">
                     <li>
-                      <strong>Languages & Frontend:</strong> React.js,
+                      <strong>Languages & Full Stack:</strong> React.js,
                       TypeScript, JavaScript (ES6+), HTML5, CSS3, Material UI
                       (MUI), React Query (TanStack), Axios
                     </li>
