@@ -52,20 +52,6 @@
       ]
     },
     {
-      "id": "R_kgDORrokQQ",
-      "name": "porto_aldie",
-      "createdAt": "2026-03-19T19:57:55Z",
-      "url": "https://github.com/aldievanz/porto_aldie",
-      "description": "my porto",
-      "isFork": false,
-      "languages": [
-        {
-          "name": "TypeScript",
-          "iconifyClass": "logos:typescript-icon"
-        }
-      ]
-    },
-    {
       "id": "R_kgDOPnYpTQ",
       "name": "umrmaulana",
       "createdAt": "2025-08-31T14:55:30Z",
