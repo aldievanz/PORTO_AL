@@ -1,3 +1,148 @@
 {
-  "data": []
+  "data": [
+    {
+      "id": "R_kgDOTineyw",
+      "name": "aldievanz.github.io",
+      "createdAt": "2026-07-24T19:27:39Z",
+      "url": "https://github.com/aldievanz/aldievanz.github.io",
+      "description": "",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos:javascript"
+        }
+      ]
+    },
+    {
+      "id": "R_kgDOPnYbfA",
+      "name": "Aldievanz",
+      "createdAt": "2025-08-31T14:47:23Z",
+      "url": "https://github.com/aldievanz/Aldievanz",
+      "description": "My Github Profile",
+      "isFork": false,
+      "languages": []
+    },
+    {
+      "id": "R_kgDORt3q_w",
+      "name": "fe_absensi",
+      "createdAt": "2026-03-22T19:50:50Z",
+      "url": "https://github.com/aldievanz/fe_absensi",
+      "description": "",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "TypeScript",
+          "iconifyClass": "logos:typescript-icon"
+        }
+      ]
+    },
+    {
+      "id": "R_kgDORt0JnA",
+      "name": "be_absensi",
+      "createdAt": "2026-03-22T18:10:50Z",
+      "url": "https://github.com/aldievanz/be_absensi",
+      "description": "",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "C#",
+          "iconifyClass": "logos:c-sharp"
+        }
+      ]
+    },
+    {
+      "id": "R_kgDORrokQQ",
+      "name": "porto_aldie",
+      "createdAt": "2026-03-19T19:57:55Z",
+      "url": "https://github.com/aldievanz/porto_aldie",
+      "description": "my porto",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "TypeScript",
+          "iconifyClass": "logos:typescript-icon"
+        }
+      ]
+    },
+    {
+      "id": "R_kgDOPnYpTQ",
+      "name": "umrmaulana",
+      "createdAt": "2025-08-31T14:55:30Z",
+      "url": "https://github.com/aldievanz/umrmaulana",
+      "description": "",
+      "isFork": true,
+      "languages": []
+    },
+    {
+      "id": "R_kgDOPlBymQ",
+      "name": "Toko-Batik-nusantara",
+      "createdAt": "2025-08-27T07:52:46Z",
+      "url": "https://github.com/aldievanz/Toko-Batik-nusantara",
+      "description": "",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "Java",
+          "iconifyClass": "logos:java"
+        }
+      ]
+    },
+    {
+      "id": "R_kgDOPk_zFQ",
+      "name": "Posyandu-Korowelang-Kulon",
+      "createdAt": "2025-08-27T06:40:08Z",
+      "url": "https://github.com/aldievanz/Posyandu-Korowelang-Kulon",
+      "description": "",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos:html-5"
+        }
+      ]
+    },
+    {
+      "id": "R_kgDOO9y8QA",
+      "name": "Asus_router",
+      "createdAt": "2025-06-18T12:55:36Z",
+      "url": "https://github.com/aldievanz/Asus_router",
+      "description": "",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "Java",
+          "iconifyClass": "logos:java"
+        }
+      ]
+    },
+    {
+      "id": "R_kgDOO9ou4g",
+      "name": "startup",
+      "createdAt": "2025-06-18T07:42:20Z",
+      "url": "https://github.com/aldievanz/startup",
+      "description": "bebas",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "Java",
+          "iconifyClass": "logos:java"
+        }
+      ]
+    },
+    {
+      "id": "R_kgDOO9r3IQ",
+      "name": "API",
+      "createdAt": "2025-06-18T09:21:18Z",
+      "url": "https://github.com/aldievanz/API",
+      "description": "",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "PHP",
+          "iconifyClass": "logos:php"
+        }
+      ]
+    }
+  ]
 }
