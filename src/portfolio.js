@@ -270,24 +270,7 @@ const publicationsHeader = {
 };
 
 const publications = {
-  data: [
-    {
-      id: "plant-map-management-system",
-      name: "Plant Map Management System",
-      createdAt: "2025-11-01T00:00:00Z",
-      description:
-        "Sistem web untuk pemetaan dan monitoring lokasi plant/unit produksi dengan fitur CRUD, manajemen user, visualisasi peta, dan role-based access control (RBAC). (Tech: React.js, NestJS, TypeScript, Material UI)",
-      url: "#",
-    },
-    {
-      id: "it-analitik-system",
-      name: "IT Analitik System",
-      createdAt: "2025-12-01T00:00:00Z",
-      description:
-        "Sistem analitik dan monitoring aset IT berbasis web dengan dashboard real-time, visualisasi data (ApexCharts, Chart.js), integrasi Google Maps untuk pemetaan lokasi aset, serta modul import/export laporan. (Tech: React.js, TypeScript, Material UI, React Query)",
-      url: "#",
-    },
-  ],
+  data: [],
 };
 
 // Contact Page
