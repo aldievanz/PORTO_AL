@@ -527,7 +527,10 @@ export default function Admin() {
           </div>
         </div>
       ) : (
-        <div className="admin-add-bar" style={{ display: "flex", gap: "1rem" }}>
+        <div
+          className="admin-add-bar"
+          style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
+        >
           <button
             className="btn-fetch-repos"
             onClick={fetchPublicRepos}
@@ -547,6 +550,18 @@ export default function Admin() {
             }}
           >
             ➕ Tambah Proyek Baru
+          </button>
+          <button
+            className="admin-btn"
+            onClick={() => saveToGitHub(projects)}
+            disabled={loading}
+            style={{
+              marginLeft: "auto",
+              backgroundColor: "#10b981",
+              color: "white",
+            }}
+          >
+            💾 Simpan & Push ke GitHub
           </button>
         </div>
       )}
